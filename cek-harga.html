@@ -2,29 +2,48 @@
 <html lang="id">
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Portal Mitra B2B</title>
+    <title>Portal Mitra B2B - PT Akbar Hijazi</title>
 </head>
 <body class="bg-slate-100 p-6">
     <div class="max-w-md mx-auto bg-white p-8 rounded shadow-xl border-t-8 border-yellow-600">
         <h2 class="text-xl font-bold mb-6">KALKULATOR HARGA LA</h2>
+        
         <label class="block text-xs font-bold mb-2">PILIH HOTEL</label>
-        <select id="hotel" class="w-full p-2 border mb-4 font-bold">
+        <select id="hotel" class="w-full p-2 border mb-4 font-bold rounded">
             <option value="500">Anjum Madinah (SAR 500)</option>
             <option value="750">Swissotel Makkah (SAR 750)</option>
         </select>
+        
         <label class="block text-xs font-bold mb-2">JUMLAH PAX</label>
-        <input type="number" id="pax" value="1" class="w-full p-2 border mb-6 font-bold">
-        <div class="bg-slate-900 text-white p-4 text-center">
+        <input type="number" id="pax" value="1" min="1" class="w-full p-2 border mb-6 font-bold rounded">
+        
+        <div class="bg-slate-900 text-white p-4 text-center rounded">
+            <div class="text-xs mb-1 opacity-70">TOTAL ESTIMASI</div>
             <div class="text-2xl text-yellow-500 font-black" id="total">SAR 0</div>
         </div>
+
+        <div class="mt-6">
+            <a href="https://wa.me/966502282299?text=Halo%20Admin%20Akbar%20Hijazi,%20saya%20ingin%20konfirmasi%20pemesanan%20hotel." 
+               class="block w-full bg-green-600 text-white text-center py-3 font-bold rounded hover:bg-green-700 transition">
+               KONFIRMASI PEMESANAN VIA WA
+            </a>
+        </div>
     </div>
+
     <script>
         function hitung() {
-            let total = document.getElementById('hotel').value * document.getElementById('pax').value;
+            let harga = document.getElementById('hotel').value;
+            let pax = document.getElementById('pax').value;
+            let total = harga * pax;
             document.getElementById('total').innerText = 'SAR ' + total.toLocaleString();
         }
+        
+        // Menambahkan pendengar event
         document.getElementById('hotel').addEventListener('change', hitung);
         document.getElementById('pax').addEventListener('input', hitung);
+        
+        // Panggil fungsi sekali agar saat halaman terbuka harga langsung muncul
+        hitung();
     </script>
 </body>
 </html>
