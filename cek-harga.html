@@ -37,13 +37,9 @@
             let total = harga * pax;
             document.getElementById('total').innerText = 'SAR ' + total.toLocaleString();
         }
-        
-        // Menambahkan pendengar event
         document.getElementById('hotel').addEventListener('change', hitung);
         document.getElementById('pax').addEventListener('input', hitung);
-        
-        // Panggil fungsi sekali agar saat halaman terbuka harga langsung muncul
-        hitung();
+        hitung(); 
     </script>
 </body>
 </html>
